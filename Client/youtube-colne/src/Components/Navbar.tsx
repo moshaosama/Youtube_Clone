@@ -115,10 +115,12 @@ const Navbar = () => {
               <p className="font-bold text-xl -mx-0">YouTube</p>
               <input
                 type="text"
-                className="sm-hidden w-3 focus-visible:w-52 transition-all duration-200 border border-solid"
+                className=" sm:hidden w-3 focus-visible:w-52 transition-all duration-200 border border-solid"
                 placeholder="Serach"
               />
-              <Icons Element={<CiSearch />} Border={""} Hover={""} />
+              <p className="sm:hidden">
+                <Icons Element={<CiSearch />} Border={""} Hover={""} />
+              </p>
             </div>
           </div>
         </div>
