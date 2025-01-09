@@ -16,7 +16,7 @@ const Home = () => {
         <div>
           <MenuProfile />
         </div>
-        <div className="w-full flex flex-col items-center justify-center">
+        <div className="w-full flex flex-col max-sm:items-center max-sm:justify-center">
           <div className="flex items-center justify-end">
             <div className="p-3 max-sm:p-0  items-center max-sm:w-80 w-full overflow-x-scroll flex gap-3 my-2 flex-row-reverse ">
               <div>
