@@ -4,13 +4,12 @@ import MenuProfile from "../Components/MenuHome";
 import Video from "../Components/Video";
 
 const Home = () => {
-  const Lang = window.localStorage.getItem("Lang");
-
+  const lang = window.localStorage.getItem("Lang");
   return (
     <>
       <div
         className={`flex ${
-          Lang === "English" ? "flex-row" : "flex-row-reverse"
+            lang === "English" ? "flex-row" : "flex-row-reverse"
         }`}
       >
         <div>
