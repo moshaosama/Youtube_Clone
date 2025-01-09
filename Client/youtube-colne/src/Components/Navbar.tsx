@@ -1,12 +1,21 @@
 import { HiOutlineBellAlert } from "react-icons/hi2";
-import { IoPersonSharp } from "react-icons/io5";
-import { MdOutlineSwitchAccount, MdSettingsVoice } from "react-icons/md";
+import { IoLanguage, IoPersonSharp } from "react-icons/io5";
+import {
+  MdFeedback,
+  MdLight,
+  MdOutlineSwitchAccount,
+  MdSettingsVoice,
+} from "react-icons/md";
 import Icons from "./Icons";
 import { CiSearch } from "react-icons/ci";
-import { FaGoogle, FaSignOutAlt, FaYoutube } from "react-icons/fa";
+import { FaDatabase, FaGoogle, FaSignOutAlt, FaYoutube } from "react-icons/fa";
 import { CgDetailsMore } from "react-icons/cg";
 import { useEffect, useState } from "react";
 import LinksMenuProfile from "./LinksMenuProfile";
+import { SiYoutubestudio } from "react-icons/si";
+import { RiCoinsFill } from "react-icons/ri";
+import { FiSettings } from "react-icons/fi";
+import { GrHelp } from "react-icons/gr";
 
 export interface DataProps {
   title: string;
@@ -36,20 +45,18 @@ const Navbar = () => {
       <div
         className={`p-3 flex ${
           Language === "English" ? "flex-row-reverse" : "flex-row"
-        } justify-between items-center sticky top-0 z-50 bg-[#f1f1f1]`}
+        } justify-between items-center transition-all duration-300 sticky top-0 z-50 bg-white`}
       >
         <div
           className={`flex items-center gap-5 ${
             Language === "English" ? "flex-row-reverse" : "flex-row"
-          }`}
+          } max-sm:hidden`}
         >
-          <div className="border border-black hover:bg-blue-300 cursor-pointer flex items-center justify-center text-center rounded-full px-1 w-fit">
-            <p
-              className="text-sm w-fit text-blue-500"
-              onClick={() => setActive(!Active)}
-            >
-              Sign in
-            </p>
+          <div
+            className="border border-black hover:bg-blue-300 cursor-pointer flex items-center justify-center text-center rounded-full px-1 w-fit"
+            onClick={() => setActive(!Active)}
+          >
+            <p className="text-sm w-fit text-blue-500">Sign in</p>
             <Icons
               Element={<IoPersonSharp />}
               Border=""
@@ -72,7 +79,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 max-sm:hidden">
           <div className="flex items-center">
             <input
               type="text"
@@ -97,14 +104,22 @@ const Navbar = () => {
             Language === "English" ? "flex-row" : "flex-row-reverse"
           } items-center gap-1`}
         >
-          <div>
+          <div className="max-sm:hidden">
             <Icons Element={<CgDetailsMore />} Border="" Hover="bg-[#adadad]" />
           </div>
           <div className="flex items-center">
             <p>
               <FaYoutube className="text-red-500 text-3xl transition-all duration-300  rounded-full cursor-pointer" />
             </p>
-            <p className="font-bold text-xl -mx-0">YouTube</p>
+            <div className="flex justify-between">
+              <p className="font-bold text-xl -mx-0">YouTube</p>
+              <input
+                type="text"
+                className="sm-hidden w-3 focus-visible:w-52 transition-all duration-200 border border-solid"
+                placeholder="Serach"
+              />
+              <Icons Element={<CiSearch />} Border={""} Hover={""} />
+            </div>
           </div>
         </div>
       </div>
@@ -114,8 +129,8 @@ const Navbar = () => {
       {Active ? (
         <div
           className={`flex flex-col justify-start bg-white  ${
-            Language == "English" ? "ms-[95pc]" : "me-[95pc]"
-          } rounded-l-xl  rounded-xl shadow-lg w-fit`}
+            Language == "English" ? "ms-[89pc]" : "me-[95pc]"
+          } rounded-l-xl rounded-xl shadow-lg w-fit`}
         >
           <div className="p-4 flex justify-between items-center gap-4">
             <div>
@@ -142,12 +157,43 @@ const Navbar = () => {
             <LinksMenuProfile eLement={<FaSignOutAlt />} Title="Sign Out" />
           </div>
           <hr className=" bg-[#ddd]" />
-          <button
-            className="bg-[#ddd] w-full p-2"
-            onClick={() => handleClick()}
-          >
-            {Language == "Arabic" ? "English" : "Arabic"}
-          </button>
+          <div>
+            <LinksMenuProfile
+              eLement={<SiYoutubestudio />}
+              Title="YouTube Studio"
+            />
+            <LinksMenuProfile
+              eLement={<RiCoinsFill />}
+              Title="Purchases and memberships"
+            />
+          </div>
+          <hr className=" bg-[#ddd]" />
+          <div>
+            <LinksMenuProfile
+              eLement={<FaDatabase />}
+              Title="You Data in Youtube"
+            />
+            <LinksMenuProfile eLement={<MdLight />} Title=" Apperances: dark" />
+            <div>
+              <LinksMenuProfile
+                eLement={<IoLanguage />}
+                Title={"Language: " + Language}
+                onClick={() => handleClick()}
+              />
+            </div>
+            <hr className=" bg-[#ddd]" />
+            <div>
+              <LinksMenuProfile eLement={<FiSettings />} Title="Settings" />
+            </div>
+            <hr className=" bg-[#ddd]" />
+            <div>
+              <LinksMenuProfile eLement={<GrHelp />} Title="Help" />
+              <LinksMenuProfile
+                eLement={<MdFeedback />}
+                Title="Send Feedback"
+              />
+            </div>
+          </div>
         </div>
       ) : null}
       {/* ///////////////// */}
