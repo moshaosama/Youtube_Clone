@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import MenuProfile from "../Components/MenuHome";
 import Video from "../Components/Video";
 
@@ -7,7 +6,7 @@ const Home = () => {
 
   return (
     <>
-        
+      <div></div>
       <div
         className={`flex ${
           Lang === "English" ? "flex-row" : "flex-row-reverse"
