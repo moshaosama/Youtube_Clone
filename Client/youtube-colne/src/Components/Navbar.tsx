@@ -1,12 +1,12 @@
 import { HiOutlineBellAlert } from "react-icons/hi2";
 import { IoPersonSharp } from "react-icons/io5";
-import { MdSettingsVoice } from "react-icons/md";
+import { MdOutlineSwitchAccount, MdSettingsVoice } from "react-icons/md";
 import Icons from "./Icons";
 import { CiSearch } from "react-icons/ci";
-import { FaYoutube } from "react-icons/fa";
+import { FaGoogle, FaSignOutAlt, FaYoutube } from "react-icons/fa";
 import { CgDetailsMore } from "react-icons/cg";
 import { useEffect, useState } from "react";
-import MenuProfile from "./menuProfile";
+import LinksMenuProfile from "./LinksMenuProfile";
 
 export interface DataProps {
   title: string;
@@ -15,17 +15,34 @@ export interface DataProps {
 
 const Navbar = () => {
   const [Active, setActive] = useState<boolean>(false);
-  const Lang = JSON.stringify(window.localStorage.getItem("Lang"));
+  const [Language, setLanguage] = useState(
+    window.localStorage.getItem("Lang") || "English"
+  );
 
+  const handleClick = async () => {
+    const newLanguage = Language === "Arabic" ? "English" : "Arabic";
+    setLanguage(newLanguage);
+    window.localStorage.setItem("Lang", newLanguage);
+  };
+  useEffect(() => {
+    console.log("Mosha");
+  }, [Language]);
+
+  console.log(Language);
 
   return (
     <>
+      {/* Navbar */}
       <div
-        className={`p-2 flex ${
-          Lang === '"English"' ? "flex-row-reverse" : "flex-row"
+        className={`p-3 flex ${
+          Language === "English" ? "flex-row-reverse" : "flex-row"
         } justify-between items-center sticky top-0 z-50 bg-[#f1f1f1]`}
       >
-        <div className="flex items-center gap-5 flex-row-reverse">
+        <div
+          className={`flex items-center gap-5 ${
+            Language === "English" ? "flex-row-reverse" : "flex-row"
+          }`}
+        >
           <div className="border border-black hover:bg-blue-300 cursor-pointer flex items-center justify-center text-center rounded-full px-1 w-fit">
             <p
               className="text-sm w-fit text-blue-500"
@@ -50,7 +67,7 @@ const Navbar = () => {
           </div>
           <div>
             <button className="bg-[#ddd] hover:bg-[#adadad] transition-all duration-200 p-2 font-semibold text-sm rounded-xl text-center ">
-              Create +
+              {Language === "English" ? "Create +" : "+ أنشاء"}
             </button>
           </div>
         </div>
@@ -75,7 +92,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-1">
+        <div
+          className={`flex ${
+            Language === "English" ? "flex-row" : "flex-row-reverse"
+          } items-center gap-1`}
+        >
           <div>
             <Icons Element={<CgDetailsMore />} Border="" Hover="bg-[#adadad]" />
           </div>
@@ -87,7 +108,49 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {Active ? <MenuProfile /> : null}
+      {/* //////////// */}
+
+      {/* MenuProfile */}
+      {Active ? (
+        <div
+          className={`flex flex-col justify-start bg-white  ${
+            Language == "English" ? "ms-[95pc]" : "me-[95pc]"
+          } rounded-l-xl  rounded-xl shadow-lg w-fit`}
+        >
+          <div className="p-4 flex justify-between items-center gap-4">
+            <div>
+              <div className="w-10 h-10 rounded-full bg-[#ddd]"></div>
+            </div>
+            <div>
+              <h1 className="font-semibold">Mohamed Osama</h1>
+              <p>mohamedOSFekry@gmail.com</p>
+              <a
+                href="#"
+                className="text-blue-600 hover:underline transition-all duration-200"
+              >
+                Create a Channel
+              </a>
+            </div>
+          </div>
+          <hr className=" bg-[#ddd]" />
+          <div>
+            <LinksMenuProfile eLement={<FaGoogle />} Title="Google Account" />
+            <LinksMenuProfile
+              eLement={<MdOutlineSwitchAccount />}
+              Title="Switch Account"
+            />
+            <LinksMenuProfile eLement={<FaSignOutAlt />} Title="Sign Out" />
+          </div>
+          <hr className=" bg-[#ddd]" />
+          <button
+            className="bg-[#ddd] w-full p-2"
+            onClick={() => handleClick()}
+          >
+            {Language == "Arabic" ? "English" : "Arabic"}
+          </button>
+        </div>
+      ) : null}
+      {/* ///////////////// */}
     </>
   );
 };
