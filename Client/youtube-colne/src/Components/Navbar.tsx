@@ -49,7 +49,7 @@ const Navbar = () => {
       <div
         className={`p-3 flex ${
           Language === "English" ? "flex-row-reverse" : "flex-row"
-        } justify-between items-center transition-all duration-300 sticky top-0 z-50 bg-white`}
+        } justify-between items-center transition-all duration-300 sticky top-0 z-50 bg-white shadow-lg`}
       >
         <div
           className={`flex items-center gap-5 ${
@@ -119,7 +119,7 @@ const Navbar = () => {
               <p className="font-bold text-xl -mx-0">YouTube</p>
               <input
                 type="text"
-                className=" sm:hidden w-3 focus-visible:w-52 transition-all duration-200 border border-solid"
+                className=" sm:hidden rounded-md mx-1 w-52 transition-all duration-200 border border-solid"
                 placeholder="Serach"
               />
               <p className="sm:hidden">

@@ -18,7 +18,7 @@ const MenuHome = () => {
   const Lang = window.localStorage.getItem("Lang");
   return (
     <>
-      <div className="bg-white p-3 w-64 overflow-y-scroll h-[48pc] ">
+      <div className="bg-white p-3 w-64 overflow-y-scroll h-[48pc] max-sm:hidden">
         <LinksMenu
           eLement={<IoHome />}
           Title={Lang === "English" ? "Home" : "الصفحه الرئيسيه"}
