@@ -2,14 +2,28 @@ import { RiShapeLine } from "react-icons/ri";
 import Icons from "../Components/Icons";
 import MenuProfile from "../Components/MenuHome";
 import Video from "../Components/Video";
+import CreateVideo from "../Components/createVideo";
+import { useState } from "react";
 
 const Home = () => {
   const lang = window.localStorage.getItem("Lang");
+  const [ActiveCreateVideo, setActiveCreateVideo] = useState<boolean>(true);
+
+  const handleClickActive = () => {
+    setActiveCreateVideo(!ActiveCreateVideo);
+  };
+
   return (
     <>
+      {ActiveCreateVideo ? (
+        <CreateVideo
+          ActiveCreateVideo={ActiveCreateVideo}
+          setActiveCreateVideo={handleClickActive}
+        />
+      ) : null}
       <div
         className={`flex ${
-            lang === "English" ? "flex-row" : "flex-row-reverse"
+          lang === "English" ? "flex-row" : "flex-row-reverse"
         }`}
       >
         <div>
@@ -48,7 +62,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="mx-10 my-5">
+          <div className="mx-10">
             <Video />
           </div>
         </div>

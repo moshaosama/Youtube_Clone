@@ -16,47 +16,60 @@ import { TfiCup } from "react-icons/tfi";
 
 const MenuHome = () => {
   const Lang = window.localStorage.getItem("Lang");
+  const transition = {
+    TitlesOne: [
+      {
+        Element: <IoHome />,
+        Title: Lang === "English" ? "Home" : "الصفحه الرئيسيه",
+      },
+      {
+        Element: <SiYoutubeshorts />,
+        Title: Lang === "English" ? "Shorts" : "Shorts",
+      },
+      {
+        Element: <MdSubscriptions />,
+        Title: Lang === "English" ? "Subscriptions" : "ألاشتراكات",
+      },
+    ],
+    TitlesTwo: [
+      {
+        ELement: <FaHistory />,
+        Title: Lang === "English" ? "History" : "السجل",
+      },
+      {
+        ELement: <MdOutlinePlaylistPlay />,
+        Title: Lang === "English" ? "PlayLists" : "قوائم التشغيل",
+      },
+      {
+        ELement: <MdOutlineWatchLater />,
+        Title: Lang === "English" ? "Whatch Later" : "المشاهده لاحقا",
+      },
+      {
+        ELement: <AiFillLike />,
+        Title: Lang === "English" ? "Likes Video" : "الفيديوهات التي اعجبتني",
+      },
+    ],
+    Arrow: Lang === "English" ? <BsArrowRight /> : <BsArrowLeft />,
+    YouText: Lang === "English" ? "you" : "انت",
+    FlexBox: Lang == "English" ? "flex-row" : "flex-row-reverse",
+  };
   return (
     <>
-      <div className="bg-white p-3 w-64 overflow-y-scroll h-[92.4vh] max-sm:hidden">
-        <LinksMenu
-          eLement={<IoHome />}
-          Title={Lang === "English" ? "Home" : "الصفحه الرئيسيه"}
-        />
-        <LinksMenu
-          eLement={<SiYoutubeshorts />}
-          Title={Lang === "English" ? "Shorts" : "Shorts"}
-        />
-        <LinksMenu
-          eLement={<MdSubscriptions />}
-          Title={Lang === "English" ? "Subscriptions" : "ألاشتراكات"}
-        />
+      <div className="bg-white p-3 w-60 overflow-y-scroll h-[92.4vh] max-sm:hidden">
+        {transition.TitlesOne.map((el) => (
+          <LinksMenu eLement={el.Element} Title={el.Title} />
+        ))}
         <hr className=" bg-[#ddd]" />
         <div
-          className={`flex ${
-            Lang == "English" ? "flex-row" : "flex-row-reverse"
-          } gap-2 items-center p-3 cursor-pointer transition-all duration-200 rounded-md hover:bg-[#ddd]`}
+          className={`flex ${transition.FlexBox} gap-2 items-center p-3 cursor-pointer transition-all duration-200 rounded-md hover:bg-[#ddd]`}
         >
-          <h1>{Lang === "English" ? "you" : "انت"}</h1>
+          <h1>{transition.YouText}</h1>
 
-          {Lang === "English" ? <BsArrowRight /> : <BsArrowLeft />}
+          {transition.Arrow}
         </div>
-        <LinksMenu
-          eLement={<FaHistory />}
-          Title={Lang === "English" ? "History" : "السجل"}
-        />
-        <LinksMenu
-          eLement={<MdOutlinePlaylistPlay />}
-          Title={Lang === "English" ? "PlayLists" : "قوائم التشغيل"}
-        />
-        <LinksMenu
-          eLement={<MdOutlineWatchLater />}
-          Title={Lang === "English" ? "Whatch Later" : "المشاهده لاحقا"}
-        />
-        <LinksMenu
-          eLement={<AiFillLike />}
-          Title={Lang === "English" ? "Likes Video" : "الفيديوهات التي اعجبتني"}
-        />
+        {transition.TitlesTwo.map((el) => (
+          <LinksMenu eLement={el.ELement} Title={el.Title} />
+        ))}
         <hr className=" bg-[#ddd]" />
         <div
           className={`m-3 flex flex-col ${

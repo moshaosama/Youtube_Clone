@@ -1,8 +1,8 @@
 import Icons from "./Icons";
 
 interface LinksMenuProps {
-  eLement: React.ReactElement;
-  Title: string;
+  eLement: React.ReactElement | string | any;
+  Title: string | any;
   onClick?: () => void;
   Color?: string;
 }
@@ -14,12 +14,13 @@ const LinksMenu = ({
   Color = "black",
 }: LinksMenuProps) => {
   const Lang = window.localStorage.getItem("Lang");
+  const transitions = {
+    flexBox: Lang === "English" ? "flex-row" : "flex-row-reverse",
+  };
   return (
     <>
       <div
-        className={`flex ${
-          Lang === "English" ? "flex-row" : "flex-row-reverse"
-        } items-center justify-start gap-4 cursor-pointer p-1 rounded-md hover:bg-[#ddd] transition-all duration-300`}
+        className={`flex ${transitions.flexBox} items-center justify-start text-sm gap-4 cursor-pointer p-1 rounded-md hover:bg-[#ddd] transition-all duration-300`}
         onClick={onClick}
       >
         <Icons Element={eLement} Border={""} Hover={""} Color={Color} />

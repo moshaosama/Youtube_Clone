@@ -49,7 +49,7 @@ const Navbar = () => {
       <div
         className={`p-3 flex ${
           Language === "English" ? "flex-row-reverse" : "flex-row"
-        } justify-between items-center transition-all duration-300 sticky top-0 z-50 bg-white shadow-lg`}
+        } justify-between items-center transition-all duration-300 sticky top-0 z-50 bg-white shadow-sm`}
       >
         <div
           className={`flex items-center gap-5 ${
@@ -60,7 +60,9 @@ const Navbar = () => {
             className="border border-black hover:bg-blue-300 cursor-pointer flex items-center justify-center text-center rounded-full px-1 w-fit"
             onClick={() => setActiveMenuPerson(!ActiveMenuPerson)}
           >
-            <p className="text-sm w-fit text-blue-500">Sign in</p>
+            <p className="text-sm w-fit text-blue-500">
+              {Language === "English" ? "Sign in" : "تسجيل الدخول"}
+            </p>
             <Icons
               Element={<IoPersonSharp />}
               Border=""
@@ -83,7 +85,11 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 max-sm:hidden">
+        <div
+          className={`flex ${
+            Language == "English" ? "flex-row" : "flex-row-reverse"
+          }  items-center gap-2 max-sm:hidden`}
+        >
           <div className="flex items-center">
             <input
               type="text"
@@ -140,7 +146,7 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="flex flex-col gap-2">
-              <div>
+              <div onClick={() => {}}>
                 <LinksMenu
                   eLement={<FaCloudUploadAlt />}
                   Title="تحميل الفيديو"
