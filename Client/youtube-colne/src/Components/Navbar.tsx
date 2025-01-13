@@ -1,27 +1,15 @@
 import { HiOutlineBellAlert } from "react-icons/hi2";
-import { IoLanguage, IoPersonSharp } from "react-icons/io5";
-import {
-  MdFeedback,
-  MdLight,
-  MdOutlineSwitchAccount,
-  MdSettingsVoice,
-} from "react-icons/md";
+import { IoPersonSharp } from "react-icons/io5";
+import { MdSettingsVoice } from "react-icons/md";
 import Icons from "./Icons";
 import { CiSearch } from "react-icons/ci";
-import {
-  FaCloudUploadAlt,
-  FaDatabase,
-  FaGoogle,
-  FaSignOutAlt,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaCloudUploadAlt, FaYoutube } from "react-icons/fa";
 import { CgDetailsMore } from "react-icons/cg";
-import { useEffect, useState } from "react";
-import { SiYoutubestudio } from "react-icons/si";
-import { RiCoinsFill, RiLiveFill } from "react-icons/ri";
-import { FiSettings } from "react-icons/fi";
-import { GrHelp } from "react-icons/gr";
+import { useState } from "react";
+
 import LinksMenu from "./LinksMenu";
+import MenuPerson from "./MenuPerson";
+import { RiLiveFill } from "react-icons/ri";
 
 export interface DataProps {
   title: string;
@@ -31,18 +19,8 @@ export interface DataProps {
 const Navbar = () => {
   const [ActiveMenuPerson, setActiveMenuPerson] = useState<boolean>(false);
   const [ActiveCreate, setActiveCreate] = useState<boolean>(false);
-
-  const [Language, setLanguage] = useState(
-    window.localStorage.getItem("Lang") || "English"
-  );
-
-  const handleClick = async () => {
-    const newLanguage = Language === "Arabic" ? "English" : "Arabic";
-    setLanguage(newLanguage);
-    window.localStorage.setItem("Lang", newLanguage);
-    window.location.reload();
-  };
-  useEffect(() => {}, [Language]);
+  const Token = window.localStorage.getItem("Token");
+  const Language = window.localStorage.getItem("Lang");
 
   return (
     <>
@@ -164,65 +142,9 @@ const Navbar = () => {
 
       {/* MenuProfile */}
       {ActiveMenuPerson ? (
-        <div
-          className={`flex flex-col justify-start bg-white  ${
-            Language == "English" ? "ms-[89pc]" : "me-[89pc]"
-          } rounded-l-xl rounded-xl shadow-lg w-fit fixed top-14 right-0`}
-        >
-          <div className="p-4 flex justify-between items-center gap-4">
-            <div>
-              <div className="w-10 h-10 rounded-full bg-[#ddd]"></div>
-            </div>
-            <div>
-              <h1 className="font-semibold">Mohamed Osama</h1>
-              <p>mohamedOSFekry@gmail.com</p>
-              <a
-                href="#"
-                className="text-blue-600 hover:underline transition-all duration-200"
-              >
-                Create a Channel
-              </a>
-            </div>
-          </div>
-          <hr className=" bg-[#ddd]" />
-          <div>
-            <LinksMenu eLement={<FaGoogle />} Title="Google Account" />
-            <LinksMenu
-              eLement={<MdOutlineSwitchAccount />}
-              Title="Switch Account"
-            />
-            <LinksMenu eLement={<FaSignOutAlt />} Title="Sign Out" />
-          </div>
-          <hr className=" bg-[#ddd]" />
-          <div>
-            <LinksMenu eLement={<SiYoutubestudio />} Title="YouTube Studio" />
-            <LinksMenu
-              eLement={<RiCoinsFill />}
-              Title="Purchases and memberships"
-            />
-          </div>
-          <hr className=" bg-[#ddd]" />
-          <div>
-            <LinksMenu eLement={<FaDatabase />} Title="You Data in Youtube" />
-            <LinksMenu eLement={<MdLight />} Title=" Apperances: dark" />
-            <div>
-              <LinksMenu
-                eLement={<IoLanguage />}
-                Title={"Language: " + Language}
-                onClick={() => handleClick()}
-              />
-            </div>
-            <hr className=" bg-[#ddd]" />
-            <div>
-              <LinksMenu eLement={<FiSettings />} Title="Settings" />
-            </div>
-            <hr className=" bg-[#ddd]" />
-            <div>
-              <LinksMenu eLement={<GrHelp />} Title="Help" />
-              <LinksMenu eLement={<MdFeedback />} Title="Send Feedback" />
-            </div>
-          </div>
-        </div>
+        Token ? (
+          <MenuPerson activeMenuPerson={ActiveMenuPerson} />
+        ) : null
       ) : null}
       {/* ///////////////// */}
     </>
