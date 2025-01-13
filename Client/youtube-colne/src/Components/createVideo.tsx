@@ -1,12 +1,7 @@
 import Button from "./Button";
 import FormInput from "./FormInput";
 
-interface createVideoProps {
-  ActiveCreateVideo: boolean;
-  setActiveCreateVideo: () => void;
-}
-
-const CreateVideo = (props: createVideoProps) => {
+const CreateVideo = () => {
   const lang = window.localStorage.getItem("Lang");
 
   const translations = {
@@ -39,12 +34,10 @@ const CreateVideo = (props: createVideoProps) => {
         <div
           className={`absolute top-3 flex justify-between w-full  ${translations.alignment}`}
         >
-          <div
-            className="text-xl bg-[#ddd] flex justify-center mx-8 p-2 rounded-full w-10 cursor-pointer"
-            onClick={() => props.setActiveCreateVideo()}
-          >
+          <div className="text-xl bg-[#ddd] flex justify-center mx-8 p-2 rounded-full w-10 cursor-pointer">
             X
           </div>
+
           <h1
             className={`text-black text-2xl font-bold ${translations.textDirection}`}
           >

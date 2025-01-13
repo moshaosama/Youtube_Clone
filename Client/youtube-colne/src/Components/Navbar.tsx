@@ -16,7 +16,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { CgDetailsMore } from "react-icons/cg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SiYoutubestudio } from "react-icons/si";
 import { RiCoinsFill, RiLiveFill } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
@@ -31,6 +31,7 @@ export interface DataProps {
 const Navbar = () => {
   const [ActiveMenuPerson, setActiveMenuPerson] = useState<boolean>(false);
   const [ActiveCreate, setActiveCreate] = useState<boolean>(false);
+
   const [Language, setLanguage] = useState(
     window.localStorage.getItem("Lang") || "English"
   );
@@ -139,7 +140,7 @@ const Navbar = () => {
 
       {/* DropDownCreate */}
       {ActiveCreate ? (
-        <div className="mx-40 bg-white w-fit p-2 fixed top-14 rounded-xl">
+        <div className="mx-40 bg-white w-fit p-2 fixed top-14 rounded-xl z-50">
           {Language === "English" ? (
             <div>
               <h1> </h1>

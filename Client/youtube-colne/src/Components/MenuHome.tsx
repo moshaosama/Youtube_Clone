@@ -55,7 +55,7 @@ const MenuHome = () => {
   };
   return (
     <>
-      <div className="bg-white p-3 w-60 overflow-y-scroll h-[92.4vh] max-sm:hidden">
+      <div className="bg-white p-3 w-60 overflow-y-scroll h-[92.6vh] max-sm:hidden sticky left-0 top-[3.7pc]">
         {transition.TitlesOne.map((el) => (
           <LinksMenu eLement={el.Element} Title={el.Title} />
         ))}
