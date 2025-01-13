@@ -16,7 +16,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 import { CgDetailsMore } from "react-icons/cg";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SiYoutubestudio } from "react-icons/si";
 import { RiCoinsFill, RiLiveFill } from "react-icons/ri";
 import { FiSettings } from "react-icons/fi";
