@@ -56,7 +56,7 @@ const CreateVideo = () => {
           {translations.Titles.map((el) => {
             return (
               <>
-                <FormInput Title={el.name} Type="text" />
+                <FormInput Title={el.name} Type="text" Name={""} />
               </>
             );
           })}

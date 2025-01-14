@@ -10,6 +10,7 @@ import { useState } from "react";
 import LinksMenu from "./LinksMenu";
 import MenuPerson from "./MenuPerson";
 import { RiLiveFill } from "react-icons/ri";
+import { Link } from "react-router";
 
 export interface DataProps {
   title: string;
@@ -35,13 +36,19 @@ const Navbar = () => {
             Language === "English" ? "flex-row-reverse" : "flex-row"
           } max-sm:hidden`}
         >
-          <div
-            className="border border-black hover:bg-blue-300 cursor-pointer flex items-center justify-center text-center rounded-full px-1 w-fit"
-            onClick={() => setActiveMenuPerson(!ActiveMenuPerson)}
-          >
-            <p className="text-sm w-fit text-blue-500">
-              {Language === "English" ? "Sign in" : "تسجيل الدخول"}
-            </p>
+          <div className="border border-black hover:bg-blue-300 cursor-pointer flex items-center justify-center text-center rounded-full px-1 w-fit">
+            {Token ? (
+              <div
+                className="w-10 h-10 rounded-full"
+                onClick={() => setActiveMenuPerson(!ActiveMenuPerson)}
+              ></div>
+            ) : (
+              <Link to={"/Login"}>
+                <p className="text-sm w-fit text-blue-500">
+                  {Language === "English" ? "Sign in" : "تسجيل الدخول"}
+                </p>
+              </Link>
+            )}
             <Icons
               Element={<IoPersonSharp />}
               Border=""
@@ -142,9 +149,7 @@ const Navbar = () => {
 
       {/* MenuProfile */}
       {ActiveMenuPerson ? (
-        Token ? (
-          <MenuPerson activeMenuPerson={ActiveMenuPerson} />
-        ) : null
+        <MenuPerson activeMenuPerson={ActiveMenuPerson} />
       ) : null}
       {/* ///////////////// */}
     </>
