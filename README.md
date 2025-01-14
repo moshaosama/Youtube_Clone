@@ -20,9 +20,9 @@ This is a **YouTube Clone** project developed using **React** with **TypeScript*
 
 - **Frontend**: React, TypeScript, React Router
 - **Backend**: Spring Boot, Java
-- **Database**: MySQL / PostgreSQL
+- **Database**:  PostgreSQL
 - **Authentication**: JWT (JSON Web Tokens)
-- **Styling**: SCSS or CSS for styling
+- **Styling**: Tailwind CSS
 
 ---
 
