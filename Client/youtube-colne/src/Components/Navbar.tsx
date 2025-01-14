@@ -3,14 +3,14 @@ import { IoPersonSharp } from "react-icons/io5";
 import { MdSettingsVoice } from "react-icons/md";
 import Icons from "./Icons";
 import { CiSearch } from "react-icons/ci";
-import { FaCloudUploadAlt, FaYoutube } from "react-icons/fa";
+import { FaYoutube } from "react-icons/fa";
 import { CgDetailsMore } from "react-icons/cg";
 import { useState } from "react";
 
-import LinksMenu from "./LinksMenu";
 import MenuPerson from "./MenuPerson";
-import { RiLiveFill } from "react-icons/ri";
+
 import { Link } from "react-router";
+import DropDownCreate from "./DropDownCreate";
 
 export interface DataProps {
   title: string;
@@ -124,27 +124,7 @@ const Navbar = () => {
       {/* //////////// */}
 
       {/* DropDownCreate */}
-      {ActiveCreate ? (
-        <div className="mx-40 bg-white w-fit p-2 fixed top-14 rounded-xl z-50">
-          {Language === "English" ? (
-            <div>
-              <h1> </h1>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-2">
-              <div onClick={() => {}}>
-                <LinksMenu
-                  eLement={<FaCloudUploadAlt />}
-                  Title="تحميل الفيديو"
-                />
-              </div>
-              <div>
-                <LinksMenu eLement={<RiLiveFill />} Title="بث محتوي مباشر" />
-              </div>
-            </div>
-          )}
-        </div>
-      ) : null}
+      {ActiveCreate ? <DropDownCreate /> : null}
       {/* ///////////// */}
 
       {/* MenuProfile */}
