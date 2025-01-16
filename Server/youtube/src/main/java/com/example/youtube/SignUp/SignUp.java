@@ -1,5 +1,6 @@
 package com.example.youtube.SignUp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -9,9 +10,13 @@ public class SignUp {
     @Id
     @GeneratedValue
     private Integer id;
+    @Column(nullable = true)
     private String username;
+    @Column(unique = true, nullable = true)
     private String Email;
+    @Column(nullable = true)
     private String Password;
+    @Column(nullable = true)
     private String passwordCheck;
 
     public SignUp(String username, String email, String password) {

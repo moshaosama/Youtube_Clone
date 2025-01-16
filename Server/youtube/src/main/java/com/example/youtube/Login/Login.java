@@ -1,9 +1,13 @@
-package com.example.youtube;
+package com.example.youtube.Login;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 @Entity
 public class Login {
+    @Id
+    @GeneratedValue
     private Integer id;
     private String Email;
     private String Password;
