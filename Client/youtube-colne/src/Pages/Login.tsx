@@ -17,8 +17,8 @@ const Login = () => {
   return (
     <>
       <div className=" w-full h-full flex justify-center items-center bg-gradient-to-b from-red-500  ">
-        <div className="bg-white rotate-6 max-sm:w-80 max-sm:rounded-xl max-sm:rotate-0 shadow-2xl shadow-red-700 hover:rotate-0 transition-all duration-500">
-          <div className="bg-white max-sm:w-80 max-sm:rounded-xl max-sm:rotate-0 w-fit p-4 -rotate-6   hover:rotate-0 transition-all duration-500">
+        <div className="bg-white rotate-6 max-sm:w-80 max-sm:rounded-xl max-sm:rotate-0 shadow-2xl hover:rounded-xl shadow-red-700 hover:rotate-0 transition-all duration-500">
+          <div className="bg-white max-sm:w-80 max-sm:rounded-xl max-sm:rotate-0 w-fit p-4 -rotate-6 hover:rounded-xl   hover:rotate-0 transition-all duration-500">
             <div className="font-bold text-3xl text-gray-700 text-center">
               Login
             </div>
